@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+    blindtestcrop:
+        image: 'org/blindtestcrop:latest'
+        command: ["--input-path", "input"]
+        volumes:
+          - ./input:/app/blindtest-crop/input
+          - ./output:/app/blindtest-crop/output:rw

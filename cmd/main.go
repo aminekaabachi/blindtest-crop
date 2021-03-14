@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"path"
 	"path/filepath"
 	"sync"
 
@@ -15,7 +16,7 @@ import (
 )
 
 var (
-	seconds    = flag.Int("seconds", 30, "Number of seconds to crop.")
+	seconds    = flag.Int64("seconds", 30, "Number of seconds to crop.")
 	inputPath  = flag.String("input-path", "", "MP3 songs input folder path.")
 	outputPath = flag.String("output-path", "./output", "MP3 croped songs output path.")
 )
@@ -52,6 +53,9 @@ func validateOutput() fs.FileInfo {
 func Main() {
 	flag.Parse()
 
+	ex, _ := os.Executable()
+	base := filepath.Dir(ex)
+
 	if *inputPath == "" {
 		flag.PrintDefaults()
 		os.Exit(1)
@@ -61,16 +65,17 @@ func Main() {
 
 	log.Printf("Started cropping all MP3 inside the path '%s'.\n", input.Name())
 
-	output := validateOutput()
+	validateOutput()
 
 	var wg sync.WaitGroup
 
 	for _, f := range files {
-		path := filepath.Join(*inputPath, f.Name())
-		buf, _ := ioutil.ReadFile(path)
+		inputPath := path.Join(base, *inputPath, f.Name())
+		buf, _ := ioutil.ReadFile(inputPath)
+		outputPath := path.Join(base, *outputPath, f.Name())
 		if filetype.Is(buf, "mp3") {
 			wg.Add(1)
-			go core.Crop(&wg, path, output.Name())
+			go core.Crop(&wg, inputPath, outputPath, *seconds)
 			wg.Wait()
 		}
 	}
