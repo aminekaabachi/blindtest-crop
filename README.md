@@ -3,7 +3,7 @@
 [![test](https://github.com/aminekaabachi/blindtest-crop/actions/workflows/test.yaml/badge.svg)](https://github.com/aminekaabachi/blindtest-crop/)
 [![codecov](https://codecov.io/gh/aminekaabachi/blindtest-crop/branch/main/graph/badge.svg?token=MS0JGLZOR8)](https://codecov.io/gh/aminekaabachi/blindtest-crop)
 
-Crop MP3 to first X seconds for blind tests
+Utility to crop MP3 to first X seconds for blind test.
 
 ## Building the project
 
