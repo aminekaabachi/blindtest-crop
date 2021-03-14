@@ -1,5 +1,4 @@
 # blindtest-crop
-====================
 [![build](https://github.com/aminekaabachi/blindtest-crop/actions/workflows/build.yaml/badge.svg)](https://github.com/aminekaabachi/blindtest-crop/)
 [![test](https://github.com/aminekaabachi/blindtest-crop/actions/workflows/test.yaml/badge.svg)](https://github.com/aminekaabachi/blindtest-crop/)
 [![codecov](https://codecov.io/gh/aminekaabachi/blindtest-crop/branch/main/graph/badge.svg?token=MS0JGLZOR8)](https://codecov.io/gh/aminekaabachi/blindtest-crop)
