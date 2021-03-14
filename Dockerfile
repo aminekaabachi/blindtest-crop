@@ -1,7 +1,7 @@
 
-FROM golang:1.14-alpine
+FROM golang:1.16-alpine
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git ffmpeg
 
 # Set the Current Working Directory inside the container
 WORKDIR /app/blindtest-crop
